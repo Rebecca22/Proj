@@ -1,0 +1,92 @@
+How to run my Program
+
+Installation Requirements (see below for instructions):
+•	Python 2.7.13
+•	Python libraries: 
+o	Scikit-learn
+o	Numpy
+o	Scipy
+o	Pandas
+o	Matplotlib 
+
+1.	Python 2.7.13 - Go to https://www.python.org/downloads/release/python-2713/ and install the correct version e.g. for a 64-bit operating system in windows install the Windows x86-64 MSI installer. Note: Make sure the “Add to path” task is ticked so the python programs are easier to type into cmd. 
+2.	“Scikit-learn” library:
+a.	Python has a special library installer program called "pip", so update it to its latest version. By typing in cmd: python -m pip install -U pip setuptools
+b.	The Scikit-learn website wants 2 other libraries to be installed called "numpy" and "scipy". For windows as there is no version readily available on the pip website, special files that pip can interpret need to be installed: 
+i.	Numpy: http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy  (numpy-1.13.1+mkl-cp27-cp27m-win_amd64.whl )
+ii.	Scipy: http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy  (scipy-0.19.1-cp27-cp27m-win_amd64.whl)
+c.	In cmd, navigate to “downloads” folder and type "pip install "numpy_file_name” and repeate this or scipy (in this order since scipy depends on numpy).
+d.	Type in cmd: pip install -U scikit-learn
+3.	Any other python libraries that are not supported by pip e.g. pandas
+In windows:
+a.	Go to : https://www.lfd.uci.edu/~gohlke/pythonlibs/#pandaspython 
+b.	Navigate to “downloads” folder and type "pip install pandas_ file_name”.
+c.	Type in cmd: pip install -U scikit-learn
+4.	Any other python libraries that are supported by pip e.g. matplotlib
+In cmd type:
+a.	python -mpip install -U pip
+b.	python -mpip install -U matplotlib 
+
+User Manual (see below for instructions):
+
+Description of the classes in src package:
+main.py -  used to run my program by running the main method. 
+HierarchicalClustering package - contains a class that standardises the feature vectors if it receives a frequency vector, calculates the Euclidean Distances of each of the feature vectors and then produces a dendogram.
+JsonFiles package - contains a class that gets all the folders in directory samples, and for each folder, get the json files and stores the contents of the files in a list and then store the list for each files in a family in a dictionary and returns the dictionary.
+ProduceVector package - contains a class which produces a vector depending if it is a bit vector, frequency vector or n-gram and returns it.
+SystemCallRepresentation package - contains a class which produces a list and returns it depending on the type of syscall behaviour being  represented ie syscall and ioctl, syscall with binder semantics, composite behaviours and ioctl or composite behaviour and binder semantics.
+Validation package – contains a class that evaluates the cuts on the dendogram at different heights using metrics (FMS, F1, ARI and SC) by finding the best clustering for the matrix passed in.
+
+To run the code:
+
+To run my program, run main.py (https://github.com/RHUL-CS-Projects/FullUnit_1718_RebeccaMerriman/tree/master/Programs/Program/src).
+
+The user is asked what they should like to execute. If they enter ‘all’, every experiment for each feature vector will be run where the feature vectors will be constructed, standardised (if a frequency vector), produce a dendogram and validate the cuts of the dendogram at the various heights using FMS, F1, ARI and SC scores to determine the best cluster. If they enter ‘one’, an experiment that the user decides will be run where the feature vector will be constructed, standardised (if a frequency vector), produce a dendogram and validate the cuts of the dendogram at the various heights using FMS, F1, ARI and SC scores to determine the best cluster. If ‘best cluster’ is entered, then the best clustering of the dendogram will be determined from the pre-computed results from the pickle files.
+
+1.	User enters “all”:
+Here experiments for each type of vector (Uni-gram bit vector, Uni-gram frequency vector, Di-gram bit vector, Di-gram frequency vector, Tri-gram bit vector or Tri-gram frequency vector) and for each type of behaviour (syscalls and ioctls, syscalls and binder semantics, composite behaviours and ioctls or composite behaviours and binder semantics). In each experiment, the feature vectors will be extracted from all the json files in the malware families (1 vector for every json file), standardised (if frequency vector), the Euclidean Distance is calculated on them and a dendogram is created of the malware samples against Euclidean Distances. Next the dendograms are cut at different heights to obtain different clusterings and the clusterings obtained are compared to the labelled dataset from CopperDroid and the best clustering obtained (the method of feature selection and model construction and the cut that is the most similar as the labelled dataset) is when the Fowlkes Mallows Score, the F1-Score, the Adjusted Rand Index or the Silhouette Coefficient is the closest to 1.
+
+The experiments for each feature vector will be run:
+a)	Firstly the program, explains the type of feature vector and system call representation that it being run e.g. Running experiment for Uni-gram bit vector with syscalls and ioctls.
+b)	Next it says that it is producing the feature vectors. Here the program extracts the system calls from the malware samples, creates the dimensions of the feature vectors according to the Uni-gram, Di-gram or Tri-gram (it prints the number of the dimensions in the feature vector) and then populates the feature vectors according to the malware samples and whether the vector is a bit vector (1 if the system call is present in the behavioural profile or 0 otherwise) or frequency vector (the number of system calls observed in the behavioural profile according to the Uni-gram, Di-gram or Tri-gram). The program prints the number of system call dimensions to the user.
+c)	Then a dendogram is produced for the feature vector. Firstly the feature vector is standardised if it is a frequency vector and then Euclidean distances are calculated and a dendogram is constructed and displayed to the user.
+d)	Next the dendogram produced is cut at different heights (the number of heights is displayed in the output to the user) to obtain different clusterings. The clusterings obtained are compared to the labelled dataset from CopperDroid and are validated against the FMS, F1, ARI and SC scores and a graph is produced to display the scores at the different heights. 
+This process (steps a – d) continues for each feature vector. 
+e)	The best clustering obtained for the specific feature vector is when the Fowlkes Mallows Score, the F1-Score, the Adjusted Rand Index or Silhouette Coefficient is the nearest to 1. The program calculates the best clustering for all the feature vectors using the various metrics and then displays the results in the output. 
+
+2.	User enters “one”:
+Here one experiment chosen by the user will be run. The feature vector will be extracted from all the json files in the malware families (1 vector for every json file), standardised (if frequency vector), the Euclidean Distance is calculated on them and a dendogram is created of the malware samples against Euclidean Distances. Next the dendogram is cut at different heights to obtain different clusterings and the clusterings obtained are compared to the labelled dataset from CopperDroid and the best clustering obtained (the method of feature selection and model construction and the cut that is the most similar as the labelled dataset) is when the Fowlkes Mallows Score, the F1-Score, the Adjusted Rand Index or the Silhouette Coefficient is the closest to 1.
+
+The experiments for the feature vector will be run:
+a)	Firstly the user is asked what n-gram (Uni-gram “uni”, Di-gram “di” or Tri-gram “tri” ), feature vector (bit “b” or frequency “f”) and system call representation “n” for syscalls and ioctls, “b” for syscalls and binder semantics, “c” for composite behaviours and ioctls or “bc” for composite behaviours and binder semantics) they would like to run. For example for Uni-gram bit vector with syscalls and ioctls.
+
+If the user does not enter the correct input at one of these stages, an error message is displayed detailing to the user that they entered the wrong input and an error message is displayed.
+b)	Next the program says that it is producing the feature vectors. Here the program extracts the system calls from the malware samples, creates the dimensions of the feature vectors according to the Uni-gram, Di-gram or Tri-gram (it prints the number of the dimensions in the feature vector) and then populates the feature vectors according to the malware samples and whether the vector is a bit vector (1 if the system call is present in the behavioural profile or 0 otherwise) or frequency vector (the number of system calls observed in the behavioural profile according to the Uni-gram, Di-gram or Tri-gram). The program prints the number of system call dimensions to the user.
+c)	Then a dendogram is produced for the feature vector. Firstly the feature vector is standardised if it is a frequency vector and then Euclidean distances are calculated and a dendogram is constructed and displayed to the user.
+d)	Next the dendogram produced is cut at different heights (the number of heights is displayed in the output to the user) to obtain different clusterings. The clusterings obtained are compared to the labelled dataset from CopperDroid and are validated against the FMS, F1, ARI and SC scores and a graph is produced to display the scores at the different heights. 
+e)	The best clustering obtained for the specific feature vector is when the Fowlkes Mallows Score, the F1-Score, the Adjusted Rand Index or Silhouette Coefficient is the nearest to 1. The program calculates the best clustering for the specific feature vector using the various metrics and then displays the results in the output. 
+
+3.	User enters “best cluster”:
+From the lists of the FMS, F1, ARI and SC scores for each height stored in pickle files, the program will calculate the best clustering obtained (the method of feature selection and model construction and the cut that is the most similar as the labelled dataset). This is when the Fowlkes Mallows Score, the F1-Score, the Adjusted Rand Index or the Silhouette Coefficient is the closest to 1.
+The best clustering from the stored FMS, F1, ARI and SC scores will be produced:
+a)	Firstly the program, explains that it is getting all the FMS, F1, ARI and SC scores for the different vectors. Every time the full experiment or one experiment is run, lists containing the FMS, F1, ARI and SC scores for each height will be stored into the pickle files for the corresponding feature vector. 
+b)	Next a graph is produced to display all the scores for all the feature vectors at the different heights. For example for the for Uni-gram bit vector with syscalls and ioctls.
+c)	The best clustering obtained for the specific feature vector is when the Fowlkes Mallows Score, the F1-Score, the Adjusted Rand Index or Silhouette Coefficient is the nearest to 1. The program calculates the best clustering for all the feature vectors using the various metrics and then displays the results in the output. 
+
+4.	Other:
+If the user does not enter “all”, “one” or “best cluster”, then a user friendly error message is displayed to the user to notify that the user did not enter a correct input and the program terminates.
+
+An error message is displayed explaining to the user what they did wrong.
+
+These error messages are also displayed for the other type of program to be run if the user enters the wrong input.
+
+Description of the test classes in the package test:
+TestHierarchicalClustering class - the class that tests the class HierarchicalClustering,
+TestJsonFiles class - the class that tests the class JsonFiles.
+TestProduceVector class - the class that tests the class ProduceVector.
+TestSystemCallRepresentation class - the class that tests the class SystemCallRepresentation.
+TestValidation class - the class that tests the class Validation.
+
+To run the tests:
+
+To run the tests, run all the Python files in the test package (https://github.com/RHUL-CS-Projects/FullUnit_1718_RebeccaMerriman/tree/master/Programs/Program/test).  

@@ -1,0 +1,72 @@
+   1 
+  44 ARM_set_tls
+  26 _newselect
+ 181 access
+   2 bind
+ 421 brk
+   4 capset
+  40 chmod
+2734 clock_gettime
+  38 clone
+ 370 close
+  10 connect
+  22 dup
+   3 execve
+   5 exit
+   3 exit_group
+ 772 fcntl64
+  48 flock
+   7 fork
+ 226 fstat64
+  71 fsync
+1050 futex
+  55 getegid32
+  55 geteuid32
+  55 getgid32
+   4 getpgid
+ 190 getpid
+ 103 getpriority
+   6 getsockname
+ 220 gettid
+ 108 gettimeofday
+ 134 getuid32
+ 551 ioctl
+1973 lseek
+   8 lstat64
+ 101 madvise
+  10 mkdir
+ 479 mmap2
+ 587 mprotect
+   3 msync
+ 133 munmap
+  32 nanosleep
+ 469 open
+   4 pipe
+  55 prctl
+1734 read
+ 333 recvfrom
+   4 recvmsg
+   6 rename
+   3 rt_sigtimedwait
+  19 sched_getparam
+  19 sched_getscheduler
+   6 sched_yield
+   4 sendmsg
+   7 sendto
+   4 setgid32
+   3 setgroups32
+   7 setpgid
+  38 setpriority
+   4 setrlimit
+   4 setuid32
+  29 sigaction
+  81 sigprocmask
+  10 socket
+ 309 stat64
+   2 statfs64
+   2 uname
+  25 unlink
+   7 wait4
+1501 write
+  90 writev
+   1 Unfinished

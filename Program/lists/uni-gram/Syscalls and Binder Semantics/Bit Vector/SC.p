@@ -1,0 +1,36 @@
+(lp1
+I-1
+acnumpy.core.multiarray
+scalar
+p2
+(cnumpy
+dtype
+p3
+(S'f8'
+I0
+I1
+tRp4
+(I3
+S'<'
+NNNI-1
+I-1
+I0
+tbS'K}\xb5\xd4WK\xed?'
+tRp5
+ag2
+(g4
+S'\xb6\xbee{~ \xd5?'
+tRp6
+ag2
+(g4
+S'[\xa3\xf6\x18\x13\xb2\xa3\xbf'
+tRp7
+ag2
+(g4
+S' t\xf7B\x83;\xa0?'
+tRp8
+ag2
+(g4
+S'\x99\x01\x85\xb2%\xed\xc1?'
+tRp9
+a.

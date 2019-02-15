@@ -1,0 +1,16 @@
+Submission Directory Structure 
+
+readme.txt
+Describes the directory structure of my submitted directory.
+
+Installation Requirements and Program Instructions.txt
+Describes installation requirements to run my program and how to use and run my program and tests.
+
+Documents
+Contains my final report in a pdf format.
+
+Program
+lists – contains directories for each feature vector and system call representations which contain the pickle files for all the different types of feature vectors and system call representations. For each type of feature vector and system call representation e.g. Uni-gram bit vector with system calls and ioctls (\lists\uni-gram\Syscalls and Ioctls\Bit Vector), there will be pickle files of FMS.p, F1.p, ARI.p and SC.p which stores the list of the scores at every cut of the dendogram and heights.p which stores the heights of the dendogram. 
+samples – contains all the malware samples. This dataset is organised into folders. Each top level folder (subdirectories of samples) corresponds to a malware family and within each malware family folder there are 2 types of files: Json files (*.json) which are the outputs produced by CopperDroid and contain actions (system calls) performed by the sample and system call files (*.syscalls ) which are counts of different counts of system calls made by the sample.
+src – contains all the source files. This src package contains a Python file (main.py) which will be used to run my program from by running the main function in it. It also contains sub packages which split the functionality of my program up. These sub packages contain Python files (.py) which are classes that contain code for my program. The sub packages are HierarchicalClustering which contains the class that standardises the feature vectors if it receives a frequency vector, calculates the Euclidean Distances of each of the feature vectors and then produces a dendogram, JsonFiles which gets all the folders in directory samples, and for each folder, it will get the json files and stores the contents of the files in a list and then store the list for each files in a family in a dictionary and returns the dictionary, ProduceVector which produces a vector depending if it is a bit vector, frequency vector or n-gram and returns it, SystemCallRepresentation which produces a list and returns it depending on the type of syscall behaviour being  represented ie syscall and ioctl, syscall with binder semantics, composite behaviours and ioctl or composite behaviour and binder semantics and Validation which contains a class that evaluates the cuts on the dendogram at different heights using metrics by finding the best clustering for the matrix passed in.
+test – contains all the unit test files (.py) for the source files above. These files are TestHierarchicalClustering which contains the class that tests the class HierarchicalClustering, TestJsonFiles which contains the class that tests the class JsonFiles,  TestProduceVector which contains the class that tests the class ProduceVector, TestSystemCallRepresentation which contains the classthat tests the class SystemCallRepresentation and TestValidation which contains the class that tests the class Validation.
