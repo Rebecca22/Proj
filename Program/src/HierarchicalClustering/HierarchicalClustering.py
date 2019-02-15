@@ -96,7 +96,7 @@ def Clustering(typeVector, behaviour):
     dendrogram(getEuclideanDistance())
     plt.show()
 
-    fig.savefig('/content/graph'+typeVector+'.png')
+    fig.savefig('/content/graph'+typeVector + " " + behaviour+'dend.png')
 
 
     typeOfVector = typeVector + " " + behaviour
