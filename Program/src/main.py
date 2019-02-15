@@ -1,5 +1,5 @@
 __author__ = "Rebecca Merriman"
-from src.HierarchicalClustering import HierarchicalClustering
+from HierarchicalClustering import HierarchicalClustering
 import cPickle as pickle
 
 """
