@@ -226,6 +226,9 @@ def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouet
 
     # sets up the FMS graph by adding the y axis labels, x axis markers, plotting the points and
     # x axis labels
+
+    fig = plt.figure()
+
     ax1 = plt.subplot(411)
     ax1.set_ylabel('FMS Scores')
     ax1.set_xticks(ind + width / 2)
@@ -257,3 +260,4 @@ def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouet
     plt.plot(t, s4, '-o', ms=8, lw=2, alpha=0.7, mfc='orange')
     plt.setp(ax4.set_xticklabels(labelsTuple), fontsize=6)
     plt.show()
+    fig.savefig('/content/graph.png')
