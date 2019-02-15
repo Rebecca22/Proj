@@ -10,7 +10,7 @@ import numpy as np
 """
 
 
-def evaluate(matrix, vector, type):
+def evaluate(matrix, vector, typeVector):
     """
         Method should cut the dendogram from the matrix passed in up to the number of json files
         and then for each dendogram cut it should calculate the fowlkes_mallows_score, adjusted
@@ -20,7 +20,7 @@ def evaluate(matrix, vector, type):
         best cut number and the silhouette coefficient.
         :param matrix: the matrix to cut and then evaluate each cut
         :param vector: the numpy array of all the feature vectors
-        :param type: the type of vector to validate
+        :param typeVector: the typeVector of vector to validate
         :return: the best cut number and the fowlkes_mallows_score for that cut, the best cut
         number, f1 score for that cut and the best cut number adjusted rand index score for that
         cut and the best cut number and silhouette coefficient for that cut.
@@ -97,7 +97,7 @@ def evaluate(matrix, vector, type):
         silhouetteList.append(silhouette)
 
     # update the pickle files with the updated lists
-    nGram, syscallRep = type.split()
+    nGram, syscallRep = typeVector.split()
 
     # set up the paths for the files
     nGram = nGram + r"-gram\'"
@@ -170,7 +170,7 @@ def evaluate(matrix, vector, type):
     bestClustering = ((bestClusteringFMS, cutNumFMS), (bestClusteringF1, cutNumF1),
                       (bestClusteringARI, cutNumARI), (bestClusteringSC, cutNumSC))
 
-    vectorRep, syscall = type.split()
+    vectorRep, syscall = typeVector.split()
 
     if syscall == "b":
         vectorRep += " bit"
@@ -196,7 +196,7 @@ def evaluate(matrix, vector, type):
 
 
 def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouetteList, heights,
-                type):
+                typeVector):
     """
         Method creates 4 line graphs showing the FMS, F1, ARI and SC scores at each height.
         Used https://matplotlib.org/gallery/subplots_axes_and_figures/shared_axis_demo.html
@@ -207,7 +207,7 @@ def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouet
     :param adjRandIndexList: a list of the ARI scores at each height
     :param silhouetteList: a list of the SC scores at each height
     :param heights: a list of all the dengogram heights
-    :param type: the type of system call and vector representation
+    :param typeVector: the typeVector of system call and vector representation
     """
 
     N = len(fowlkesMallowsScoreList)
@@ -232,7 +232,7 @@ def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouet
     ax1 = plt.subplot(411)
     ax1.set_ylabel('FMS Scores')
     ax1.set_xticks(ind + width / 2)
-    ax1.set_title(type + ' FMS, F1, ARI and SC scores for each Height')  # title of graphs
+    ax1.set_title(typeVector + ' FMS, F1, ARI and SC scores for each Height')  # title of graphs
     plt.plot(t, s1, '-o', ms=8, lw=2, alpha=0.7, mfc='orange')
     plt.setp(ax1.set_xticklabels(labelsTuple), fontsize=6)
 
@@ -260,4 +260,4 @@ def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouet
     plt.plot(t, s4, '-o', ms=8, lw=2, alpha=0.7, mfc='orange')
     plt.setp(ax4.set_xticklabels(labelsTuple), fontsize=6)
     plt.show()
-    fig.savefig('/content/graph'+this.type+'.png')
+    fig.savefig('/content/graph'+typeVector+'.png')
