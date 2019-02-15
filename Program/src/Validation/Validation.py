@@ -260,4 +260,4 @@ def scoreGraphs(fowlkesMallowsScoreList, f1ScoreList, adjRandIndexList, silhouet
     plt.plot(t, s4, '-o', ms=8, lw=2, alpha=0.7, mfc='orange')
     plt.setp(ax4.set_xticklabels(labelsTuple), fontsize=6)
     plt.show()
-    fig.savefig('/content/graph.png')
+    fig.savefig('/content/graph'+this.type+'.png')

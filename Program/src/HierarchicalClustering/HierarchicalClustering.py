@@ -89,12 +89,15 @@ def Clustering(typeVector, behaviour):
     # Height = the distance at which this cluster merged into another cluster.
     # Huge jumps/gaps indicate that clusters were merged that are not similar
     # ie they don't belong to the same cluster.
-    plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(10, 5))
     plt.title('Hierarchical Clustering Dendrogram')
     plt.xlabel('Malware Family Number')
     plt.ylabel('Euclidean Distance')
     dendrogram(getEuclideanDistance())
     plt.show()
+
+    fig.savefig('/content/graph'+typeVector+'.png')
+
 
     typeOfVector = typeVector + " " + behaviour
     setBestCluster(Validation.evaluate(getEuclideanDistance(), vector, typeOfVector))
