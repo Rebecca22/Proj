@@ -1,5 +1,5 @@
 __author__ = "Rebecca Merriman"
-from src.SystemCallRepresentation import SystemCallRepresentation
+from SystemCallRepresentation import SystemCallRepresentation
 import numpy as np
 
 """

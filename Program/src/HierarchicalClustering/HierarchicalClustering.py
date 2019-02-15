@@ -1,8 +1,8 @@
 __author__ = "Rebecca Merriman"
 from sklearn import preprocessing
 from scipy.cluster.hierarchy import linkage, dendrogram
-from src.ProduceVector import ProduceVector
-from src.Validation import Validation
+from ProduceVector import ProduceVector
+from Validation import Validation
 from matplotlib import pyplot as plt
 
 """

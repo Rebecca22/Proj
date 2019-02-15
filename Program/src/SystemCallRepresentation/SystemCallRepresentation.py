@@ -1,5 +1,5 @@
 __author__ = "Rebecca Merriman"
-from src.JsonFiles import ReadFromJsonFiles
+from JsonFiles import ReadFromJsonFiles
 
 """
     This class produces a list and returns it depending on the type of syscall behaviour being 

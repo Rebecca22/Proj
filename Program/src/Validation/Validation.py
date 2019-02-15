@@ -1,6 +1,6 @@
 __author__ = "Rebecca Merriman"
 from scipy.cluster.hierarchy import cut_tree
-from src.ProduceVector import ProduceVector
+from ProduceVector import ProduceVector
 from sklearn import metrics
 from matplotlib import pyplot as plt
 import numpy as np
