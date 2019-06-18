@@ -17,6 +17,11 @@ import cPickle as pickle
 
 def main():
 
+    file = open("test.txt", "w")
+    file.write("hi")
+    file.close()  
+    exit(0)  
+
     bestCluster = dict()
     maxFMSScore = 0
     maxF1Score = 0
