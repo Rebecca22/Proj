@@ -16,9 +16,8 @@ import cPickle as pickle
 
 
 def main():
+    open('data.txt', 'wb').write("hi")
 
-    %%writefile "test.txt"
-    print ("hi")  
     exit(0)  
 
     bestCluster = dict()
