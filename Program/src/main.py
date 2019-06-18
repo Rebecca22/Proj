@@ -18,6 +18,9 @@ import cPickle as pickle
 def main():
     open('data.txt', 'wb').write("hi")
 
+    from google.colab import files
+    files.download('data.txt')
+
     exit(0)  
 
     bestCluster = dict()
