@@ -16,10 +16,7 @@ import cPickle as pickle
 
 
 def main():
-    open('data.txt', 'wb').write("hi")
-
-    from google.colab import files
-    files.download('data.txt')
+    open('data.txt', 'wb').write(r.content)
 
     exit(0)  
 
